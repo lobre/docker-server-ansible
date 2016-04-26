@@ -2,7 +2,7 @@
 
 - name: Start containers
   hosts: host
-  remote_user: "{{ ansible_user }}"
+  remote_user: "{{ docker_user }}"
 
   tasks:
     - name: Search all containers of proxy

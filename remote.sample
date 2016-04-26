@@ -2,9 +2,9 @@
 other1.example.com 
 
 [host:vars]
-ansible_user=docker
-ansible_pass=mypassword
-ansible_group=docker
+docker_user=docker
+docker_pass=mypassword
+docker_group=docker
 
 proxy_path=/var/www/docker-proxy
 apps_path=/var/www/docker-apps

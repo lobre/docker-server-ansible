@@ -3,7 +3,7 @@ localhost
 
 [host:vars]
 ansible_connection=local
-ansible_user=myuser
+docker_user=myuser
 
 proxy_path=/home/myuser/docker-proxy
 apps_path=/home/myuser/docker-apps
