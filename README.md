@@ -2,8 +2,9 @@
 
 A few ansible script to manage docker proxy and docker apps
 
-[https://github.com/loric-/docker-server-proxy]
-[https://github.com/loric-/docker-server-apps]
+https://github.com/loric-/docker-server-proxy
+
+https://github.com/loric-/docker-server-apps
 
 ## Configuration
 
