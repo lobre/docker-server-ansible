@@ -1,0 +1,32 @@
+---
+
+- name: Start containers
+  hosts: host
+  remote_user: "{{ ansible_user }}"
+
+  tasks:
+    - name: Search all containers of proxy
+      find:
+        paths: "{{ proxy_path }}"
+        patterns: "docker-compose.yml"
+        recurse: yes
+      register: result
+
+    - name: Start all containers of proxy
+      command: "docker-compose up -d"
+      args:
+        chdir: "{{ item.path | dirname }}"
+      with_items: result.files
+
+    - name: Search all containers of apps
+      find:
+        paths: "{{ apps_path }}"
+        patterns: "docker-compose.yml"
+        recurse: yes
+      register: result
+
+    - name: Start all containers of apps
+      command: "docker-compose up -d"
+      args:
+        chdir: "{{ item.path | dirname }}"
+      with_items: result.files

@@ -1,0 +1,35 @@
+---
+
+- name: Prepare environment
+  hosts: host
+  remote_user: root
+
+  tasks:
+    - name: Update apt cache if needed
+      apt: update_cache=yes cache_valid_time=3600
+
+    - name: Add Docker repository key
+      apt_key:
+        id: "2C52609D"
+        url: "https://apt.dockerproject.org/gpg"
+        state: present
+
+    - name: Add docker repository
+      apt_repository: >
+        repo="deb https://apt.dockerproject.org/repo ubuntu-trusty main"
+        update_cache=yes
+        state=present
+
+    - name: Install required tools
+      apt: name={{ item }} state=latest
+      with_items:
+        - sudo
+        - docker-engine
+        - python-pip
+        - python-passlib
+
+    - name: Install python required packages
+      pip: name={{ item }} state=latest
+      with_items:
+        - docker-py
+        - docker-compose

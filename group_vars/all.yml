@@ -1,0 +1,4 @@
+---
+
+proxy_repo: https://github.com/loric-/docker-server-proxy.git
+apps_repo: https://github.com/loric-/docker-server-apps.git

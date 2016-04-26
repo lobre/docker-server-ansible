@@ -1,0 +1,33 @@
+---
+
+- name: Create user
+  hosts: host
+  remote_user: root
+
+  tasks:
+    - name: Create docker user
+      user: name="{{ docker_user }}" group="{{ docker_group }}"
+      when: docker_user is defined and docker_pass is defined and docker_group is defined
+
+    - name: Change password of docker user
+      shell: "echo {{ docker_user }}:{{ docker_pass }} | /usr/sbin/chpasswd"
+      when: docker_user is defined and docker_pass is defined and docker_group is defined
+
+    - name: Enable sudo for user without password
+      lineinfile: >
+        dest=/etc/sudoers
+        state=present
+        regexp="^{{ docker_user }}"
+        line="{{ docker_user }} ALL=(ALL) NOPASSWD:ALL"
+      when: docker_user is defined and docker_pass is defined and docker_group is defined
+
+    - name: Register local SSH public key
+      local_action: command echo "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"
+      register: ssh_path
+      when: docker_user is defined and docker_pass is defined and docker_group is defined
+
+    - name: Upload SSH key for docker user
+      authorized_key: >
+        user="{{ docker_user }}"
+        key="{{ lookup('file', ssh_path.stdout) }}"
+      when: docker_user is defined and docker_pass is defined and docker_group is defined
