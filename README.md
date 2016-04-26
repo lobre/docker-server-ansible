@@ -2,6 +2,9 @@
 
 A few ansible script to manage docker proxy and docker apps
 
+[https://github.com/loric-/docker-server-proxy]
+[https://github.com/loric-/docker-server-apps]
+
 ## Configuration
 
 Duplicate, rename and edit `local.sample` or `remote.sample` according to your needs.
@@ -28,6 +31,8 @@ Update the two repositories (apps and proxy).
 
     ansible-playbook -i <host> update.yml
 
+After the first update, you should connect to the environment and configure each app by renaming the sample env files.
+
 ## Htpasswd
 
 Create a htpasswd for a domain/app.
@@ -36,6 +41,8 @@ Create a htpasswd for a domain/app.
 
 ## Up
 
+Start the proxy and all the apps.
+
     ansible-playbook -i <host> up.yml
 
-Start the proxy and all the apps.
+**CAUTION: the first time, it is advised to launch the proxy manually by following its GitHub documentation.**
