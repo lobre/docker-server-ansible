@@ -40,6 +40,10 @@ Create a htpasswd for a domain/app.
 
     ansible-playbook -i <host> -e domain=<mydomain> -e user=<myuser> -e pass=<mypass> htpasswd.yml
 
+You have then to connect to the environment and restart the corresponding compose project so it takes effect.
+
+    docker-compose restart
+
 ## Up
 
 Start the proxy and all the apps.
