@@ -6,5 +6,4 @@ docker_user=docker
 docker_pass=mypassword
 docker_group=docker
 
-proxy_path=/var/www/docker-proxy
 apps_path=/var/www/docker-apps

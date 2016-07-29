@@ -1,8 +1,6 @@
 # Docker server ansible
 
-A few ansible script to manage docker proxy and docker apps
-
-https://github.com/loric-/docker-server-proxy
+A few ansible script to manage docker apps
 
 https://github.com/loric-/docker-server-apps
 
@@ -28,7 +26,7 @@ Create a user to run docker containers.
 
 ## Update
 
-Update the two repositories (apps and proxy).
+Update the apps repository.
 
     ansible-playbook -i <host> update.yml
 
@@ -46,7 +44,7 @@ You have then to connect to the environment and restart the corresponding compos
 
 ## Up
 
-Start the proxy and all the apps.
+Start all the apps.
 
     ansible-playbook -i <host> up.yml
 

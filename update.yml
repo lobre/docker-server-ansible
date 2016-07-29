@@ -5,12 +5,6 @@
   remote_user: "{{ docker_user }}"
 
   tasks:
-    - name: Pull proxy from git
-      git: >
-        repo="{{ proxy_repo }}"
-        dest="{{ proxy_path }}"
-        force=yes
-
     - name: Pull apps from git
       git: >
         repo="{{ apps_repo }}"

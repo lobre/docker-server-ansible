@@ -5,5 +5,4 @@ localhost
 ansible_connection=local
 docker_user=myuser
 
-proxy_path=/home/myuser/docker-proxy
 apps_path=/home/myuser/docker-apps
